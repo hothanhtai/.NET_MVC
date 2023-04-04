@@ -1,0 +1,50 @@
+﻿@model PagedList.PagedList<WebsiteBanSach.Models.EF.News>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Tin tức";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/main_styles.css">
+
+<style>
+    .news_section_container {
+        margin-top: 180px;
+    }
+</style>
+<div class="container news_section_container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 style="border-bottom: 1px red solid; color: #fe4c50">Tin tức</h2>
+        </div>
+    </div>
+    @if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="img-box">
+                        <a href="#" title="@item.Title"><img style="margin-bottom:7px" width="240" src="@item.Image" alt="@item.Title" /></a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="content-box">
+                        <h4><a href="@item.Alias-n@(item.Id)" style="color:black" title="@item.Title">@item.Title</a></h4>
+                        <div class="descript-box">
+                            @item.Description
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6" style="text-align:right" ;>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
+        </div>
+    }
+
+</div>
+

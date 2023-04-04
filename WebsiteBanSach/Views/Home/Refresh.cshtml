@@ -1,0 +1,35 @@
+﻿@model WebsiteBanSach.Models.ThongKeModel
+@if (Model != null)
+{
+    <div class="thongke">
+        <table class="table">
+            <tr>
+                <td>Lượt Truy Cập Hôm Nay</td>
+                <td>@Model.HomNay</td>
+            </tr>
+            <tr>
+                <td>Lượt Truy Cập Hôm Qua</td>
+                <td>@Model.HomQua</td>
+            </tr>
+            <tr>
+                <td>Lượt Truy Cập Tuần Này</td>
+                <td>@Model.TuanNay</td>
+            </tr>
+            <tr class="tronline">
+                <td>Số Người Online</td>
+                <td>@ViewBag.Visitors_online <div class="online"></div></td>
+            </tr>
+        </table>
+    </div>
+}
+<style>
+    .online{
+        width:10px;
+        height:10px;
+        background-color:greenyellow;
+        border: 3px solid #4cff00;
+        border-radius:50%;
+    }
+ 
+</style>
+

@@ -1,0 +1,27 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+<h2>Delete Role</h2>
+
+<p>Are you sure you want to delete this role?</p>
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+</dl>
+
+@using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { }))
+{
+    @Html.HiddenFor(x => x.Id)
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+

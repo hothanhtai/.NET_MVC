@@ -1,0 +1,139 @@
+﻿@model IEnumerable<WebsiteBanSach.Models.EF.ProductImage>
+@{
+    ViewBag.Title = "Ảnh sản phảm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutEmpty.cshtml";
+
+
+}
+
+<style>
+    .glImage {
+        list-style: none;
+        margin-top: 35px;
+        /*display: flex;*/
+        display: grid;
+        grid-template-columns: auto auto auto;
+        padding: 10px;
+        
+    }
+
+        .glImage li {
+            flex-direction:
+            display: inline-block;
+            position: relative;
+           box-shadow: 14px 17px 25px 2px rgba(0,0,0,0.8);
+            -webkit-box-shadow: 14px 17px 25px 2px rgba(0,0,0,0.8);
+            -moz-box-shadow: 14px 17px 25px 2px rgba(0,0,0,0.8);
+            margin:5px;
+         /*   display: grid;
+            grid-template-columns: auto auto auto;
+            background-color: #2196F3;
+            padding: 10px;*/
+        }
+
+    .box-btn {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .card-header{
+        position:fixed;
+        top:0;
+        left:0;
+        z-index:99;
+        background-color:chartreuse;
+        color:black;
+    }
+</style>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Tất cả hình ảnh của sản phẩm </h3>
+
+            <div class="card-tools">
+                @*<button type="button" class="btn btn-danger" title="Collapse">
+                    Xóa hết
+                </button>*@
+                <input type="button" value="Tải ảnh" class="btn btn-success ml-1" onclick="BrowseServer('txtImage');" />
+            </div>
+        </div>
+        <div class="card-body">
+            <ul class="glImage">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <li id="trow_@item.Id">
+                            <img src="@item.Image" width="200" />
+                            <div class="box-btn">
+                                <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete"><i class="fa fa-trash"></i></a>
+                                @if (item.IsDefault)
+                                {
+                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-success btnDefault"><i class="fa fa-check"></i></a>
+                                }
+                                else
+                                {
+                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-warning btnDefault"><i class='fas fa-times-circle'></i></a>
+                                }
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        
+        <div class="card-footer">
+
+        </div>
+        
+    </div>
+    
+
+</section>
+ 
+
+<script>
+    function BrowseServer(field) {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (fileUrl) {
+            debugger;
+            AddImage(@ViewBag.productId, fileUrl);
+        };
+        finder.popup();
+    }
+    function AddImage(id, url) {
+        debugger;
+        $.ajax({
+            url: '/admin/productimage/AddImage',
+            type: 'POST',
+            data: { productId: id, url: url },
+            success: function (rs) {
+                if (rs.Success) {
+                    window.location.reload();
+                }
+            }
+        });
+    }
+    $(document).ready(function () {
+        $('body').on('click', '.btnDelete', function () {
+            var id = $(this).data('id');
+            var conf = confirm('Bạn có muốn xóa ảnh này không?');
+            if (conf === true) {
+                $.ajax({
+                    url: '/admin/productimage/delete',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+                            $('#trow_' + id).remove();
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
