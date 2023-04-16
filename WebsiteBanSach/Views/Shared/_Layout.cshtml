@@ -24,6 +24,94 @@
 
 </head>
 <body>
+    <style>
+        /*FOOTER START///////////////////*/
+
+        .footer {
+            padding: 50px 0 20px 0;
+            background-color: #35404f;
+            color: #878c94;
+        }
+
+            .footer .title {
+                text-align: left;
+                color: #fff;
+                font-size: 25px;
+            }
+
+
+            .footer .social-icon {
+                padding: 0px;
+                margin: 0px;
+            }
+
+                .footer .social-icon a {
+                    display: inline-block;
+                    color: #fff;
+                    font-size: 25px;
+                    padding: 5px;
+                }
+
+                    .footer .social-icon a:hover{
+                        transform:scale(1.2);
+                        transition: all .3s ease-in;
+                    }
+
+                    .footer .acount-icon a {
+                        display: block;
+                        color: #fff;
+                        font-size: 18px;
+                        padding: 5px;
+                        text-decoration: none;
+                    }
+
+                        .footer .acount-icon a:hover{
+                            transform: translateX(5px);
+                            transition: all .3s ease-in-out;
+                        }
+
+                        .footer .acount-icon .fa {
+                            margin-right: 25px;
+                        }
+
+
+            .footer .category a {
+                text-decoration: none;
+                color: #fff;
+                display: inline-block;
+                padding: 5px 20px;
+                margin: 1px;
+                border-radius: 4px;
+                margin-top: 6px;
+                background-color: black;
+                border: solid 1px #fff;
+            }
+
+                .footer .category a:hover{
+                    background-color: crimson;
+                    color:azure;
+                    transition: all .2s ease-out;
+                }
+
+                .footer .payment {
+                    margin: 0px;
+                    padding: 0px;
+                    list-style-type: none
+                }
+
+                .footer .payment li {
+                    list-style-type: none
+                }
+
+                    .footer .payment li a {
+                        text-decoration: none;
+                        display: inline-block;
+                        color: #fff;
+                        float: left;
+                        font-size: 25px;
+                        padding: 10px 10px;
+                    }
+    </style>
     <div class="super_container">
 
         <!-- Header -->
@@ -44,17 +132,17 @@
 
                                     <!-- Currency / Language / My Account -->
 
-                                   
+
                                     <li class="language">
                                         <a href="#">
-                                            English
+                                            <img src="~/Content/assets/images/eng2.png"/> English
                                             <i class="fa fa-angle-down"></i>
                                         </a>
                                         <ul class="language_selection">
-                                            <li><a href="#">French</a></li>
-                                            <li><a href="#">Italian</a></li>
-                                            <li><a href="#">German</a></li>
-                                            <li><a href="#">Spanish</a></li>
+                                            <li><a href="#"><img style="margin-right:3px;" src="~/Content/assets/images/vn.png" />Vietnamese</a></li>
+                                            <li><a href="#"><img style="margin-right:3px;" src="~/Content/assets/images/italy.png" />Italian</a></li>
+                                            <li><a href="#"><img style="margin-right:3px;" src="~/Content/assets/images/duc.png" />German</a></li>
+                                            <li><a href="#"><img style="margin-right:3px;" src="~/Content/assets/images/tbn.png" />Spanish</a></li>
                                         </ul>
                                     </li>
                                     <li class="account">
@@ -147,8 +235,7 @@
 
         @Html.Action("Partial_Subcrice", "Home")
         <!-- Footer -->
-
-        <footer class="footer">
+        @*<footer class="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
@@ -180,6 +267,66 @@
                     </div>
                 </div>
             </div>
+        </footer>*@
+
+        <!--   FOOTER START================== -->
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h4 class="title">BookTTShop</h4>
+                        <span class="acount-icon">
+                            <a href="#">🏡 Trang chủ</a>
+                            <a href="#">📝 Giới thiệu</a>
+                            <a href="#">🛒 Sản phẩm</a>
+                            <a href="#">🎁 Khuyến mãi</a>
+                        </span>
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <h4 class="title">Danh mục</h4>
+                        <div class="category">
+                            <a href="https://localhost:44393/danh-muc-san-pham/tieu-thuyet-1">Tiểu thuyết</a>
+                            <a href="https://localhost:44393/danh-muc-san-pham/ngon-tinh-2">Ngôn tình</a>
+                            <a href="https://localhost:44393/danh-muc-san-pham/tam-ly-3">Tâm lý</a>
+                            <a href="https://localhost:44393/danh-muc-san-pham/chinh-tri-8">Chính trị</a>
+                            <a href="https://localhost:44393/danh-muc-san-pham/kinh-te-9">Kinh tế</a>
+                            <a href="https://localhost:44393/danh-muc-san-pham/nghe-thuat-11">Nghệ thuật</a>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4 class="title">Thanh Toán</h4>
+                        <p>Bạn có thể thanh toán bằng các hình thức dưới đây!</p>
+                        <ul class="payment">
+                            <li><a href="#"><i class="fa fa-cc-mastercard" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-paypal" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-visa" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4 class="title">Liên hệ</h4>
+                        <a style="text-decoration: none; color: #ffffff;" href="mailto:thanhtaiho188@gmail.com "><i class='fas fa-paper-plane'></i> Thanhtaiho188@gmail.com</a><br/>
+                        <a style="text-decoration: none; color: #ffffff;" href="tel: 0366788812"><i class='fas fa-phone-alt'></i> 0366788812</a>
+                        <ul class="social-icon">
+                            <a style="color: #0a80ec;" target="_blank" href="https://www.facebook.com/" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a style="color: #ff3b48" href="https://www.instagram.com/" target="_blank" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a style="color:red;" href="https://www.youtube.com/" target="_blank" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                            <a style="color: #55acee;" target="_blank" href="https://twitter.com/" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a style="color:springgreen" target="_blank" href="https://www.google.gg/" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="row text-center">BookTTShop Copyright &copy; 2023 by ThanhTai ♥️ </div>
+            </div>
+
+
         </footer>
 
     </div>

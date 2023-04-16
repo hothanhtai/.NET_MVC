@@ -4,14 +4,26 @@
     HttpMethod = "POST",
     UpdateTargetId = "load_data",
     OnSuccess = "OnSuccessCO",
-    OnFailure = "OnFailure"
-}, new { @Id = "myForm"}))
+    OnFailure = "OnFailure",
+    OnBegin = "OnBeginCO"
+}, new { @Id = "myForm" }))
 {
     <script>
+        function OnBeginCO() {
+            $('#btnCheckOut').attr('disabled', 'disabled');
+            $('#load_send').show();
+        }
 
         function OnSuccessCO(res) {
             if (res.Success) {
-                location.href = "/ShoppingCart/CheckOutSuccess";
+                if (res.code == 1) {
+                    location.href = "/ShoppingCart/CheckOutSuccess";
+
+                }
+                else {
+                    location.href = res.Url
+
+                }
             }
         }
 
@@ -36,12 +48,28 @@
     </div>
     <div class="form-group">
         <label>Hình thức thanh toán</label>
-        <select class="form-control" name="TypePayment">
+        <select class="form-control" name="TypePayment" id="drTypePayment">
             <option value="1" selected>COD</option>
             <option value="2">Chuyển khoản</option>
         </select>
     </div>
+
+    <div class="form-group" id="load_form_payment" style="display:none;">
+        <h4><label>Chọn phương thức thanh toán: </label><br /></h4>
+        <h5>Cách 1: Chuyển hướng sang VNPay chọn phương thức thanh toán</h5>
+        <label><input type="radio" name="TypePaymentVN" value="0" checked /> Cổng thanh toán VNPayQR </label>
+        <h5>Cách 2: Tách phương thức thanh toán tại site của MerChant</h5>
+        <label><input type="radio" name="TypePaymentVN" value="1" /> Thanh toán qua ứng dụng hổ trợ VNPayQR </label><br />
+        <label><input type="radio" name="TypePaymentVN" value="2" />ATM tài khoản ngân hàng nội địa </label><br />
+        <label><input type="radio" name="TypePaymentVN" value="3" /> Thanh toán qua thẻ quốc tế </label><br />
+    </div>
+
+    
+    <div class="form-group" id="load_send" style="display:none;">
+        <img src="~/Content/assets/images/giphy.gif" width="50"/>
+        <span>Đang kiểm tra...</span>
+    </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-block btn-success">Đặt hàng</button>
+        <button type="submit" class="btn btn-block btn-success" id="btnCheckOut">Đặt hàng</button>
     </div>
 }

@@ -378,7 +378,7 @@ section
 	border-right: solid 1px #33333b;
 	padding-right: 20px;
 	padding-left: 20px;
-	text-align: center;
+	text-align: left;
 	vertical-align: middle;
 	background: #1e1e27;
 }
@@ -1255,7 +1255,9 @@ section
 }
 .deal_ofthe_week_img img
 {
+	width: 107%;
 	height: 100%;
+	
 }
 .deal_ofthe_week_content
 {

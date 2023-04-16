@@ -14,6 +14,9 @@
             <a href="/admin/home" class="nav-link"><i class='fas fa-house-user'></i> Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/order" class="nav-link"><i class='fas fa-clipboard-list'></i> Danh sách đơn hàng</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link"><i class='fas fa-clipboard'></i> Chi tiết đơn hàng</a>
         </li>
     </ul>
@@ -27,7 +30,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Chi tiết đơn hàng</h3>
+            <h1 class="card-title" style="font-weight:bolder;font-size:28px;">Chi Tiết Đơn Hàng</h1>
 
 
         </div>
@@ -75,14 +78,35 @@
                 </div>
             </div>
             <div class="row">
+
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Trạng thái</label>
-                        <p class="form-control">@(Model.TypePayment == 1 ? "Chưa thanh toán" : "Đã thanh toán")</p>
+                        <label>Trạng thái thanh toán</label>
+                        <p class="form-control">
+                            @if (Model.Status == 1)
+                            {
+                                <span>Chưa thanh toán</span>
+                            }
+                            @if (Model.Status == 2)
+                            {
+                                <span>Đã thanh toán</span>
+                            }
+                            @if (Model.Status == 3)
+                            {
+                                <span>Hoàn thành đơn hàng</span>
+                            }
+                            @if (Model.Status == 4)
+                            {
+                                <span>Đã hủy</span>
+                            }
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-6">
-
+                    <div class="form-group">
+                        <label>Phương thức thanh toán</label>
+                        <p class="form-control">@(Model.TypePayment == 1 ? "COD" : "Chuyển khoản")</p>
+                    </div>
                 </div>
             </div>
             <div class="row">

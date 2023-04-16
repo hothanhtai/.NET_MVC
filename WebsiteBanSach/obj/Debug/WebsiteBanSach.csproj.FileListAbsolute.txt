@@ -136,3 +136,5 @@ C:\Users\PC\source\repos\WebsiteBanSach\WebsiteBanSach\obj\Debug\WebsiteBanSach.
 C:\Users\PC\source\repos\WebsiteBanSach\WebsiteBanSach\obj\Debug\WebsiteBanSach.Migrations.addOriginalPrice.resources
 C:\Users\PC\source\repos\WebsiteBanSach\WebsiteBanSach\obj\Debug\WebsiteBanSach.csproj.AssemblyReference.cache
 C:\Users\PC\source\repos\WebsiteBanSach\WebsiteBanSach\obj\Debug\WebsiteBanSach.Migrations.updateCategory2.resources
+C:\Users\PC\source\repos\WebsiteBanSach\WebsiteBanSach\obj\Debug\WebsiteBanSach.Migrations.updateOrderViewModel.resources
+C:\Users\PC\source\repos\WebsiteBanSach\WebsiteBanSach\obj\Debug\WebsiteBanSach.Migrations.updateOrderModel.resources

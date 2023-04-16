@@ -273,8 +273,8 @@
 
             $('#demoOriginalPrice').bind('blur focusout keypress keyup', function () {
                 var demoGet = $('#demoOriginalPrice').autoNumeric('get');
-                $('#demoOriginalPrice').val(demoGet);
-                $('#demoOriginalPrice').autoNumeric('set', demoGet);
+                $('#OriginalPrice').val(demoGet);
+                $('#OriginalPrice').autoNumeric('set', demoGet);
             });
 
              CKEDITOR.replace('txtDetail', {

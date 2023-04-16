@@ -10,17 +10,33 @@
             <a href="/@item.Alias">@item.Title</a>
         </li>
     }
-
     <li class="menu_item has-children">
-        <a href="#">
-            My Account
-            <i class="fa fa-angle-down"></i>
-        </a>
-        <ul class="menu_selection">
-            <li><a href="/account/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-            <li><a href="/"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
-        </ul>
+
+        @if (!Request.IsAuthenticated)
+        {
+            <a href="#">
+                Tài khoản
+                <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="account_selection" style="max-height:400px">
+                <li><a href="/account/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng nhập</a></li>
+                <li><a href="/account/register"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng ký</a></li>
+            </ul>
+
+        }
+        else
+        {
+            <a href="#">
+                @User.Identity.Name
+                <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="account_selection" style="max-height:400px;">
+                <li><a href="#"><i class="fas fa-user-alt" aria-hidden="true"></i>Tài khoản</a></li>
+                <li><a href="javascript: document.getElementById('logOffForm').submit()"><i class='fas fa-power-off'></i> Đăng xuất</a></li>
+            </ul>
+        }
     </li>
+   
 
 </ul>
    

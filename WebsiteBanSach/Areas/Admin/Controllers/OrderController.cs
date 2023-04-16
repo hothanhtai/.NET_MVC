@@ -49,8 +49,8 @@ namespace WebsiteBanSach.Areas.Admin.Controllers
             if (item != null)
             {
                 dbConect.Orders.Attach(item);
-                item.TypePayment = trangthai;
-                dbConect.Entry(item).Property(x => x.TypePayment).IsModified = true;
+                item.Status = trangthai;
+                dbConect.Entry(item).Property(x => x.Status).IsModified = true;
                 dbConect.SaveChanges();
                 return Json(new { message = "Success", Success = true });
             }

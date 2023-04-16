@@ -32,7 +32,7 @@ namespace WebsiteBanSach.Controllers
 
         public ActionResult Partial_News_Home()
         {
-            var items = dbConect.News.Take(3).ToList();
+            var items = dbConect.News.Where(x => x.IsActive).Take(3).ToList();
             return PartialView(items);
         }
 

@@ -57,6 +57,7 @@
                         <th>Tên Khách hàng</th>
                         <th>Phone</th>
                         <th>Tiền</th>
+                        <th>Phương thức thanh toán</th>
                         <th>Trạng thái</th>
                         <th>Ngày đặt hàng</th>
                         <th></th>
@@ -75,7 +76,25 @@
                                 <td>@item.CustomerName</td>
                                 <td>@item.Phone</td>
                                 <td>@WebsiteBanSach.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
-                                <td>@(item.TypePayment==1? "Chờ thanh toán" :"Đã thanh toán")</td>
+                                <td>@(item.TypePayment==1? "COD" :"Chuyển khoản")</td>
+                                <td>
+                                    @if (item.Status == 1)
+                                    {
+                                        <span>Chưa thanh toán</span>
+                                    }
+                                    @if (item.Status == 2)
+                                    {
+                                        <span>Đã thanh toán</span>
+                                    }
+                                    @if (item.Status == 3)
+                                    {
+                                        <span>Hoàn thành đơn hàng</span>
+                                    }
+                                    @if (item.Status == 4)
+                                    {
+                                        <span>Đã hủy</span>
+                                    }
+                                </td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td>
                                     <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-outline-success"><i class='fas fa-eye'></i> Xem</a>
@@ -123,7 +142,13 @@
                             Đã thanh toán
                         </option>
                         <option value="1">
-                            Chờ thanh toán
+                            Chưa thanh toán
+                        </option>
+                        <option value="3">
+                            Hoàn thành đơn hàng
+                        </option>
+                        <option value="4">
+                            Đã hủy
                         </option>
                     </select>
                 </div>
